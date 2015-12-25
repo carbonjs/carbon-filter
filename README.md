@@ -40,7 +40,7 @@ form.addElements([
             new Filter.StripTags({
                 allowedTags: ["div", "span"],
                 allowedAttributes: ["id", "class"]
-            });
+            })
         ]
     });
 ]);
