@@ -1,7 +1,7 @@
 # carbon-filter
 The `carbon-filter` module provides Zend-like set of commonly used data filters. This means you can run your data through a set of filters after you've received user's input or before you insert data into your database. You can use it as a stand-alone module or most commonly with `carbon-form` module which filters form data automatically for you.
 
-If you've ever worked with any of `Zend_Filter` filters from the Zend Framework you will be familiar with it's sintax and if you haven't then scroll down to the "Usage" section and you'll be up-and-running in no time.
+If you've ever worked with any `Zend_Filter` filter from the Zend Framework you will be familiar with it's sintax and if you haven't then scroll down to the "Usage" section and you'll be up-and-running in no time.
 
 
 ## Installation
