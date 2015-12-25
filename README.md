@@ -52,16 +52,10 @@ Trims the beginning and the end of a string.
 
 #### StripTags
 Strips HTML tags from the input. You can specify which tags or attributes you'd like to leave (if any).
-##### Options
-###### allowedTags
-Type: `Array`
 
-Tags from the input that you want to keep in the output.
-
-###### allowedAttributes
-Type: `Array`
-
-Attributes of HTML tags from the input that you want to keep in the output.
+**Options**
+* `allowedTags` [`Array`] - Tags from the input that you want to keep in the output.
+* `allowedAttributes` [`Array`] - Attributes of HTML tags from the input that you want to keep in the output.
 
 ## Who is using it
 The `carbon-filter` module is one of many that is running behind our web application: [Timelinity](https://www.timelinity.com)
