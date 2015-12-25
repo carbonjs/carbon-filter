@@ -50,7 +50,7 @@ form.addElements([
 #### StringTrim
 Trims the beginning and the end of a string.
 
-### StripTags
+#### StripTags
 Strips HTML tags from the input. You can specify which tags or attributes you'd like to leave (if any).
 ##### Options
 ###### allowedTags
