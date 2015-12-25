@@ -1,6 +1,5 @@
 {
   "name": "carbon-filter",
-  "version": "0.1.0",
   "description": "Provides Zend-like filters in Node.js",
   "author": {
     "name": "Amir Ahmetovic",
