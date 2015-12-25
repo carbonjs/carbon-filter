@@ -12,6 +12,9 @@ npm install carbon-filter [--save]
 ## Usage
 The `carbon-filter` module packs some of the most used filters which share the same interface. Each filter provides public access to the function `filter` which receives only one parameter and returns filtered data. Some filters have options so that you can customize it to your needs.
 
+The function `filter` has the following prototype `Filter.prototype.filter = function(value)` and it is common to all filters. It has 1 parameter:
+* `value` - Input value that needs to be filtered.
+
 #### Stand-alone
 ```js
 var Filter = require("carbon-filter");
