@@ -1,7 +1,8 @@
 {
   "name": "carbon-filter",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Provides Zend-like filters in Node.js",
+  "homepage": "http://www.carbonjs.com/",
   "author": {
     "name": "Amir Ahmetovic",
     "email": "chox.nox@gmail.com"
