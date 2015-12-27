@@ -1,6 +1,6 @@
 {
   "name": "carbon-filter",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Provides Zend-like filters in Node.js",
   "author": {
     "name": "Amir Ahmetovic",
@@ -14,14 +14,14 @@
     "zend"
   ],
   "licence": "MIT",
-  "homepage": "https://github.com/choxnox/carbon-filter",
+  "homepage": "https://github.com/carbonjs/carbon-filter",
   "main": "./index.js",
   "bugs": {
-    "url": "https://github.com/choxnox/carbon-filter/issues"
+    "url": "https://github.com/carbonjs/carbon-filter/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/choxnox/carbon-filter.git"
+    "url": "git://github.com/carbonjs/carbon-filter.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
