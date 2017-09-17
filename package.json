@@ -1,8 +1,8 @@
 {
   "name": "carbon-filter",
-  "version": "0.1.7",
-  "description": "Provides Zend-like filters in Node.js",
-  "homepage": "http://www.carbonjs.com/",
+  "version": "1.0.0",
+  "description": "Data filters for the CarbonJS Framework or to be used standalone",
+  "homepage": "https://github.com/carbonjs/carbon-filter",
   "author": {
     "name": "Amir Ahmetovic",
     "email": "chox.nox@gmail.com"
@@ -15,7 +15,6 @@
     "zend"
   ],
   "licence": "MIT",
-  "homepage": "https://github.com/carbonjs/carbon-filter",
   "main": "./index.js",
   "bugs": {
     "url": "https://github.com/carbonjs/carbon-filter/issues"
@@ -25,10 +24,17 @@
     "url": "git://github.com/carbonjs/carbon-filter.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "dependencies": {
-    "lodash": "^3.10.1",
+    "gm": "^1.23.0",
+    "lodash": "latest",
     "sanitize-html": "^1.7.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "fs-extra": "^4.0.1",
+    "mocha": "^3.4.2",
+    "mocha-each": "^1.1.0"
   }
 }
