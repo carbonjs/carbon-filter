@@ -9,22 +9,30 @@ var Filter = require("../index");
 describe("Filters", function() {
     describe("Files", function() {
         describe("Move", function() {
+            var sourceFile = "./test/assets/somefile";
+
+            beforeEach(function() {
+                fs.outputFileSync(sourceFile, Math.random().toString());
+            })
+
+            afterEach(function() {
+                fs.removeSync(sourceFile);
+            })
+
             it("should move the file", function(done) {
-                var destFile = "./test/assets/test.filters.files.move-1-moved.jpg";
+                var destFile = "./test/assets/somefile2";
 
                 var Move = new Filter.File.Move({
                     fullPath: destFile
                 });
 
-                var originalFile = "./test/assets/sFNP7Og.jpg";
-                var sourceFile = "./test/assets/test.filters.files.move-1.jpg";
+                Move.filter(sourceFile, {}, function(err, filePath) {
+                    expect(err).to.equal(null);
+                    expect(filePath).to.equal(destFile);
 
-                fs.copy(originalFile, sourceFile, { overwrite: true }, function() {
-                    Move.filter(sourceFile, {}, function(err, filePath) {
-                        expect(err).to.equal(null);
-                        expect(filePath).to.equal(destFile);
-                        done();
-                    });
+                    fs.remove(filePath);
+
+                    done();
                 });
             });
 
@@ -33,32 +41,30 @@ describe("Filters", function() {
                     extension: "cpy"
                 });
 
-                var originalFile = "./test/assets/test";
-                var sourceFile = "./test/assets/somefile";
+                Move.filter(sourceFile, {}, function(err, filePath) {
+                    expect(err).to.equal(null);
+                    expect(filePath).to.equal(sourceFile + ".cpy");
 
-                fs.copy(originalFile, sourceFile, { overwrite: true }, function() {
-                    Move.filter(sourceFile, {}, function(err, filePath) {
-                        expect(err).to.equal(null);
-                        expect(filePath).to.equal("./test/assets/somefile.cpy");
-                        done();
-                    });
+                    fs.remove(filePath);
+
+                    done();
                 });
             });
 
             it("should change file name", function(done) {
                 var Move = new Filter.File.Move({
-                    filename: "test"
+                    filename: "somefile2"
                 });
 
-                var originalFile = "./test/assets/sFNP7Og.jpg";
-                var sourceFile = "./test/assets/test.filters.files.move-2.jpg";
+                Move.filter(sourceFile, {}, function(err, filePath) {
+                    var newFileName = sourceFile.replace(/\/somefile/, "/somefile2");
 
-                fs.copy(originalFile, sourceFile, { overwrite: true }, function() {
-                    Move.filter(sourceFile, {}, function(err, filePath) {
-                        expect(err).to.equal(null);
-                        expect(filePath).to.equal("./test/assets/test.jpg");
-                        done();
-                    });
+                    expect(err).to.equal(null);
+                    expect(filePath).to.equal(newFileName);
+
+                    fs.remove(filePath);
+
+                    done();
                 });
             });
 
@@ -67,69 +73,67 @@ describe("Filters", function() {
                     extension: "test"
                 });
 
-                var originalFile = "./test/assets/sFNP7Og.jpg";
-                var sourceFile = "./test/assets/test.filters.files.move-3.jpg";
+                Move.filter(sourceFile, {}, function(err, filePath) {
+                    expect(err).to.equal(null);
+                    expect(filePath).to.equal(sourceFile + ".test");
 
-                fs.copy(originalFile, sourceFile, { overwrite: true }, function() {
-                    Move.filter(sourceFile, {}, function(err, filePath) {
-                        expect(err).to.equal(null);
-                        expect(filePath).to.equal("./test/assets/test.filters.files.move-3.test");
-                        done();
-                    });
+                    fs.remove(filePath);
+
+                    done();
                 });
             });
 
             it("should change file name and extension", function(done) {
                 var Move = new Filter.File.Move({
-                    filename: "test",
+                    filename: "somefile2",
                     extension: "abc"
                 });
 
-                var originalFile = "./test/assets/sFNP7Og.jpg";
-                var sourceFile = "./test/assets/test.filters.files.move-4.jpg";
+                Move.filter(sourceFile, {}, function(err, filePath) {
+                    var newFileName = sourceFile.replace(/\/somefile/, "/somefile2.abc");
 
-                fs.copy(originalFile, sourceFile, { overwrite: true }, function() {
-                    Move.filter(sourceFile, {}, function(err, filePath) {
-                        expect(err).to.equal(null);
-                        expect(filePath).to.equal("./test/assets/test.abc");
-                        done();
-                    });
+                    expect(err).to.equal(null);
+                    expect(filePath).to.equal(newFileName);
+
+                    fs.remove(filePath);
+
+                    done();
                 });
             });
 
-            it("should move a file to /test directory", function(done) {
+            it("should move a file to /move directory", function(done) {
                 var Move = new Filter.File.Move({
-                    path: "./test/assets/move"
+                    path: "./test/assets/output/move"
                 });
 
-                var originalFile = "./test/assets/sFNP7Og.jpg";
-                var sourceFile = "./test/assets/test.filters.files.move-5.jpg";
+                Move.filter(sourceFile, {}, function(err, filePath) {
+                    var newFileName = sourceFile.replace(/.\/test\/assets\//, "./test/assets/output/move/");
 
-                fs.copy(originalFile, sourceFile, { overwrite: true }, function() {
-                    Move.filter(sourceFile, {}, function(err, filePath) {
-                        expect(err).to.equal(null);
-                        expect(filePath).to.equal("./test/assets/move/test.filters.files.move-5.jpg");
-                        done();
-                    });
+                    expect(err).to.equal(null);
+                    expect(filePath).to.equal(newFileName);
+
+                    fs.remove(filePath);
+
+                    done();
                 });
             });
 
-            it("should move a file to /test directory then change it's name and extension", function(done) {
+            it("should move a file to /move directory then change it's name and extension", function(done) {
                 var Move = new Filter.File.Move({
-                    path: "./test/assets/move",
-                    filename: "cloud",
+                    path: "./test/assets/output/move",
+                    filename: "somefile2",
                     extension: "def"
                 });
 
-                var originalFile = "./test/assets/sFNP7Og.jpg";
-                var sourceFile = "./test/assets/test.filters.files.move-6.jpg";
+                Move.filter(sourceFile, {}, function(err, filePath) {
+                    var newFileName = sourceFile.replace(/.\/test\/assets\/somefile/, "./test/assets/output/move/somefile2.def");
 
-                fs.copy(originalFile, sourceFile, { overwrite: true }, function() {
-                    Move.filter(sourceFile, {}, function(err, filePath) {
-                        expect(err).to.equal(null);
-                        expect(filePath).to.equal("./test/assets/move/cloud.def");
-                        done();
-                    });
+                    expect(err).to.equal(null);
+                    expect(filePath).to.equal(newFileName);
+
+                    fs.remove(filePath);
+
+                    done();
                 });
             });
         });

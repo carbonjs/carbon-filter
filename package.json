@@ -1,6 +1,6 @@
 {
   "name": "carbon-filter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Data filters for the CarbonJS Framework or to be used standalone",
   "homepage": "https://github.com/carbonjs/carbon-filter",
   "author": {
@@ -29,12 +29,14 @@
   "dependencies": {
     "fs-extra": "^4.0.2",
     "gm": "^1.23.0",
-    "lodash": "latest",
+    "lodash.isfunction": "^3.0.9",
+    "lodash.isstring": "^4.0.1",
     "sanitize-html": "^1.7.0"
   },
   "devDependencies": {
     "chai": "^4.1.0",
     "fs-extra": "^4.0.2",
+    "jimp": "^0.3.5",
     "mocha": "^3.4.2",
     "mocha-each": "^1.1.0"
   }
