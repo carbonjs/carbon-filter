@@ -27,7 +27,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "sanitize-html": "^1.7.0"
+    "sanitize-html": "^2.3.2"
   },
   "devDependencies": {
     "chai": "^4.1.0",
